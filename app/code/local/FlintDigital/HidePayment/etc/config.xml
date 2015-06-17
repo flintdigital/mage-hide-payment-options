@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <FlintDigital_HidePayment>
+      <version>0.1.0</version>
+    </FlintDigital_HidePayment>
+  </modules>
+  <global>
+    <helpers>
+      <hidepayment>
+        <class>FlintDigital_HidePayment_Helper</class>
+      </hidepayment>
+    </helpers>
+	<models>
+	  <hidepayment>
+		<class>FlintDigital_HidePayment_Model</class>
+		<resourceModel>hidepayment_mysql4</resourceModel>
+	  </hidepayment>
+	</models>
+    <events>
+	  <payment_method_is_active> <!-- identifier of the event we want to catch -->
+        <observers>
+          <payment_method_is_active_handler> <!-- identifier of the event handler -->
+            <type>singleton</type> <!-- class method call type; valid are model, object and singleton -->
+            <class>hidepayment/observer</class> <!-- observers class alias -->
+            <method>paymentMethodIsActive</method>  <!-- observer's method to be called -->
+            <args></args> <!-- additional arguments passed to observer -->
+          </payment_method_is_active_handler>
+        </observers>
+      </payment_method_is_active>
+    </events>
+  </global>
+</config> 

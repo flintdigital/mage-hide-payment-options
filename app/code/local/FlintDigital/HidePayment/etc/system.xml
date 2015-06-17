@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<config>
+	  <tabs>
+		<flint translate="label" module="hidepayment">
+            <label>Flint Extensions</label>
+            <sort_order>5</sort_order>
+        </flint>
+	  </tabs>
+	  <sections>
+		<flint_payment  translate="label" module="hidepayment">                    
+		<label>Payment Override Options</label>
+		<tab>flint</tab>
+		<frontend_type>text</frontend_type>
+		<sort_order>20</sort_order>
+		<show_in_default>1</show_in_default>
+		<show_in_website>1</show_in_website>
+		<show_in_store>1</show_in_store>            
+					<groups>
+				      <hide_method translate="label"> 
+					  <label>Hide Payment on Frontend</label>
+					  <frontend_type>text</frontend_type>
+					  <sort_order>20</sort_order>
+					  <show_in_default>1</show_in_default>
+					  <show_in_website>1</show_in_website>
+					  <show_in_store>1</show_in_store>
+				       <fields>
+                          <method_code translate="label">
+                            <label>Method Name to Hide On Frontend</label>
+							<frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment>Enter the payment method code to hide on the frontend. Multiple values seperated by comma. No spaces. </comment>
+                          </method_code>
+					   </fields>
+					   </hide_method>
+					</groups>
+		</flint_payment>
+	  </sections>
+</config>
