@@ -8,7 +8,7 @@ Install with [modgit](https://github.com/jreinke/modgit):
 
     $ cd /path/to/magento
     $ modgit init
-    $ modgit clone mage-hide-payment-options https://github.com/flintdigital/mage-mod-hide-payment-options.git
+    $ modgit add mage-mod-hide-payment-options-fd git@github.com:flintdigital/mage-mod-hide-payment-options-fd.git
 
 or download package manually [here](https://github.com/flintdigital/mage-hide-payment-options/archive/master.zip) and unzip in Magento root folder.
 * If you are logged in log out and then log back in. 
