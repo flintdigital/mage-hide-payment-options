@@ -2,19 +2,14 @@
 class FlintDigital_HidePayment_Model_Observer
 {
 
-			public function paymentMethodIsActive(Varien_Event_Observer $observer)
-			{
-				  $instance = $observer->getMethodInstance();
+    public function paymentMethodIsActive(Varien_Event_Observer $observer)
+    {
+        $instance = $observer->getMethodInstance();
         $result = $observer->getResult();
-		$paymentMethodCode = explode(",",Mage::getStoreConfig('flint_payment/hide_method/method_code'));
-		
-        if (in_array($instance->getCode(),$paymentMethodCode)) {
-            if (Mage::app()->getStore()->isAdmin()) {
-                $result->isAvailable = true;
-            } else {
-                $result->isAvailable = false;
-            }
-        }
-			}
-		
+        $paymentCodesToHide = explode(",", Mage::getStoreConfig('payment/fdpaymentoverride/method_code'));
+
+        //Always available on admin. In frontend is available if not set to be hidden in the config.
+        $result->isAvailable = Mage::app()->getStore()->isAdmin() || !in_array($instance->getCode(), $paymentCodesToHide);
+    }
+
 }
