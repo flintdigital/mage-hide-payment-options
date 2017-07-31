@@ -12,9 +12,12 @@ class FlintDigital_HidePayment_Model_Observer
         $instance = $observer->getMethodInstance();
         $result = $observer->getResult();
 
-        //Always available on admin. In frontend is available if not set to be hidden in the config.
-        if($paymentCodesToHide) {
-            $result->isAvailable = Mage::app()->getStore()->isAdmin() || !in_array($instance->getCode(), $paymentCodesToHide);
+        //Preserve original value of $result->isAvailable, however set to false
+	// if in frontend and code is in array
+	if($paymentCodesToHide) {
+	    if  (!Mage::app()->getStore()->isAdmin() && in_array($instance->getCode(), $paymentCodesToHide) ) {
+	    		$result->isAvailable = false;
+            }
         }
     }
 
